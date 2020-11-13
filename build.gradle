@@ -5,6 +5,11 @@ plugins {
 group 'org.petersix'
 version '1.0-SNAPSHOT'
 
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
 repositories {
     mavenCentral()
     flatDir {
@@ -17,4 +22,8 @@ dependencies {
 
     compile (name:'germLibCrypt-1.0', ext:'jar')
     compile 'org.apache.commons:commons-lang3:3.11'
+}
+
+test {
+    systemProperty "file.encoding", "utf-8"
 }

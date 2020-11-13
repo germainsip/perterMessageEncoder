@@ -49,6 +49,7 @@ public class TransCoder {
 
     public String encode(String msgTest) {
         msgTest = stripAccents(msgTest);
+        System.out.println(msgTest);
         char[] mesgTab = msgTest.toCharArray();
         StringBuilder msgRetour = new StringBuilder();
         for(Character letter : mesgTab){

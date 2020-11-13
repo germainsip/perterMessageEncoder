@@ -11,7 +11,7 @@ import java.util.logging.FileHandler;
 
 public class TranscoderTest {
  public static GenKey testGermain;
- public final String msgTest = "Les test sont là pour essayer !!!";
+ public final String msgTest = "Les tests sont là pour essayer !!!";
     @Test
     public void createMapTest() {
         testGermain = new GenKey("Germain");
@@ -24,10 +24,11 @@ public class TranscoderTest {
 
     @Test
     public void encodeTest() {
+        testGermain = new GenKey("Germain");
         TransCoder transCoderTest = new TransCoder(testGermain);
         String msgEncodedTest = transCoderTest.encode(msgTest);
         Assert.assertNotEquals("", msgTest);
-        System.out.println(msgTest);
+        System.out.println(msgEncodedTest);
     }
 
     @Test
