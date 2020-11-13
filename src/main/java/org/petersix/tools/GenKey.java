@@ -9,9 +9,9 @@ import java.util.List;
 import static org.petersix.utils.Constants.ALPHABET;
 
 public class GenKey {
-    private String prenom;
-    private String generatedKey;
-    private final String generatedCryptedKey;
+    private final String prenom;
+    private final String generatedKey;
+    private String generatedCryptedKey = null;
 
     public String getGeneratedCryptedKey() {
         return generatedCryptedKey;
@@ -23,6 +23,12 @@ public class GenKey {
 
     public String getGeneratedKey() {
         return generatedKey;
+    }
+
+    public GenKey(String prenom, String generatedCryptedKey) {
+        this.prenom = prenom;
+        this.generatedCryptedKey = generatedCryptedKey;
+        this.generatedKey = ManaBox.decrypt(this.generatedCryptedKey);
     }
 
     public GenKey(String prenom) {
@@ -37,13 +43,13 @@ public class GenKey {
 
         Collections.shuffle(charList);
 
-        //charList.toArray(code);
-
-        //System.out.println(Arrays.toString(code));
-
         StringBuilder chaineCode = new StringBuilder();
         for( Character car : charList){ chaineCode.append(car); }
 
         return String.valueOf(chaineCode);
+    }
+
+    public void writeKey(){
+
     }
 }
