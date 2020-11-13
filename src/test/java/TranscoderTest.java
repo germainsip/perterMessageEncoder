@@ -15,6 +15,14 @@ public class TranscoderTest {
     @Test
     public void createMapTest() {
         testGermain = new GenKey("Germain");
+        String home = System.getProperty("user.dir");
+        Path path = Paths.get(home, "GermainKey.txt");
+        byte[] bs = testGermain.getGeneratedCryptedKey().getBytes();
+        try {
+            Files.write(path, bs);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         TransCoder transcodeTest = new TransCoder(testGermain);
         Assert.assertNotNull(transcodeTest.getEncode());
         System.out.println(transcodeTest.getEncode().toString());
@@ -22,23 +30,24 @@ public class TranscoderTest {
         System.out.println(transcodeTest.getDecode().toString());
     }
 
-    @Test
+    /*@Test
     public void encodeTest() {
         testGermain = new GenKey("Germain");
         TransCoder transCoderTest = new TransCoder(testGermain);
         String msgEncodedTest = transCoderTest.encode(msgTest);
         Assert.assertNotEquals("", msgTest);
         System.out.println(msgEncodedTest);
-    }
 
-    @Test
+    }*/
+
+    /*@Test
     public void decodeTest() {
         TransCoder transCoderTest = new TransCoder(testGermain);
         String msgEncodedTest = transCoderTest.encode(msgTest);
         String msgDecodedTest = transCoderTest.decode(msgEncodedTest);
         Assert.assertNotEquals("", msgDecodedTest);
         System.out.println(msgTest);
-    }
+    }*/
 
     @Test
     public void writeEncodeTest() throws IOException {

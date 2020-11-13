@@ -85,6 +85,8 @@ public class App {
                            "║       3) Quitter                       ║ \n" +
                            "╚════════════════════════════════════════╝");
 
+        String test = "uVakB sQ:YUEHqxlRvIc,.wNtCpfMFmod!'hrWgKeLXGSZPnJbyDAzjiTO";
+        System.out.println(test.length());
 
     }
 }
