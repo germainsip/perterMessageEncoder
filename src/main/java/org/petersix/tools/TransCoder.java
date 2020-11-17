@@ -12,6 +12,10 @@ public class TransCoder {
     private Map<Character, String> encode = new HashMap<Character, String>();
     private Map<String, Character> decode = new HashMap<String, Character>();
 
+    /**
+     *
+     * @param key
+     */
     public TransCoder(GenKey key){
         char[] code = key.getGeneratedKey().toCharArray();
         Character first = 'A';
@@ -30,14 +34,27 @@ public class TransCoder {
         }
     }
 
+    /**
+     *
+     * @return
+     */
     public Map<Character, String> getEncode() {
         return encode;
     }
 
+    /**
+     *
+     * @return
+     */
     public Map<String, Character> getDecode() {
         return decode;
     }
 
+    /**
+     *
+     * @param path
+     * @param msg
+     */
     public void writeIntoFile(Path path, String msg) {
         byte[] bs = msg.getBytes();
         try {
@@ -47,6 +64,11 @@ public class TransCoder {
         }
     }
 
+    /**
+     *
+     * @param msgTest
+     * @return
+     */
     public String encode(String msgTest) {
         msgTest = stripAccents(msgTest);
         char[] mesgTab = msgTest.toCharArray();
@@ -57,6 +79,11 @@ public class TransCoder {
         return msgRetour.toString();
     }
 
+    /**
+     *
+     * @param msgTest
+     * @return
+     */
     public String decode(String msgTest) {
         StringBuilder msgRetour = new StringBuilder();
         String[] mesgTab = new String[ msgTest.length()/2];
