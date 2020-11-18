@@ -45,15 +45,18 @@ public class Message {
             } catch (IOException e) {
                 e.printStackTrace();
             }
+            System.out.println("====== Décodage =====");
             for(String ligne : msgEncodded){
                 //System.out.println(ligne);
                 String ligneDecoded = transCoder.decode(ligne);
+                System.out.println(ligneDecoded);
                 try {
                     Files.writeString(msgClearPath, ligneDecoded + System.lineSeparator(), StandardOpenOption.CREATE, StandardOpenOption.APPEND);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
             }
+            System.out.println("Le message décodé se trouve: " + msgClearPath.toString());
         } else {
             try {
                 this.msgClear = Files.readAllLines(msgClearPath);
@@ -69,6 +72,8 @@ public class Message {
                     e.printStackTrace();
                 }
             }
+            System.out.println("Le message encodé se trouve: " + msgEncodedPath.toString());
+
         }
     }
 }

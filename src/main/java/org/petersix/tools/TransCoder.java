@@ -71,7 +71,7 @@ public class TransCoder {
      */
     public String encode(String msgTest) {
         msgTest = stripAccents(msgTest);
-        System.out.println(msgTest);
+        //System.out.println(msgTest);
         char[] mesgTab = msgTest.toCharArray();
         StringBuilder msgRetour = new StringBuilder();
         for(Character letter : mesgTab){
@@ -102,6 +102,7 @@ public class TransCoder {
             //System.out.println(couple);
             msgRetour.append(decode.get(couple));
         }
+
         return msgRetour.toString();
     }
 
