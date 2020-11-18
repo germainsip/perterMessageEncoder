@@ -29,64 +29,65 @@ MMMMMMMXkl:,,,;;::cccccc::;;,,,:oONMMMMM
 MMMMMMMMMWXOd:,............':oONWMMMMMMM
  */
 
+import org.petersix.GUI.Menu;
+import org.petersix.model.Message;
 import org.petersix.tools.GenKey;
 
+import javax.swing.*;
+import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.nio.file.StandardOpenOption;
+import java.io.PrintWriter;
+import java.net.URISyntaxException;
+import java.nio.file.*;
+import java.util.Map;
 
 public class App {
-    public static void main(String[] args) {
-        /*GenKey chaineCode = new GenKey("germain");
-        System.out.printf("Génération de la clé pour %s%n",chaineCode.getPrenom());
-        System.out.println("Clé en clair: ");
-        System.out.println(chaineCode.getGeneratedKey());
-        System.out.println("=================================");
-        System.out.println("Clé cryptée: ");
-        System.out.println(chaineCode.getGeneratedCryptedKey());*/
+    public static void main(String[] args) throws IOException, URISyntaxException {
 
 
-       /* String home = System.getProperty("user.dir");
-        System.out.println(home);
-        Path path = Paths.get(home, "test.txt");
-        System.out.println(Files.notExists(path));
-        if (Files.notExists(path)) {
-            try {
-                Files.createFile(path);
-                System.out.println("fichier et dossier créé");
-            } catch (IOException e) {
-                e.printStackTrace();
+
+
+        /*Menu menu = new Menu();
+        String test = menu.init();
+        String home = System.getProperty("user.dir");*/
+
+        JFileChooser dialogue = new JFileChooser(new File("."));
+        PrintWriter sortie;
+        File fichier;
+
+        if (dialogue.showOpenDialog(null)==
+                JFileChooser.APPROVE_OPTION) {
+            fichier = dialogue.getSelectedFile();
+            //sortie = new PrintWriter(new FileWriter(fichier.getPath(), true));
+            //sortie.close();
+            System.out.println(fichier.getPath());
             }
-        }
 
-        try {
-            String str = "This is write file Example";
-            byte[] bs = str.getBytes();
-            Files.write(path, bs);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
 
-        try {
-            String str = "\nThis is write file Example";
-            byte[] bs = str.getBytes();
-            Files.write(path, bs, StandardOpenOption.APPEND);
-        } catch (IOException e) {
-            e.printStackTrace();
+       /* if (!test.equals("quit")){
+            Map<String,String> choix = menu.pathChooser(test);
+            switch (test){
+                case "decode":
+                    Path msgClearPath = Paths.get(home,"decoded.txt");
+                    Path msgEncodedPath = Paths.get(home,choix.get("encodedFile")+".txt");
+                    Path msgKeyPath = Paths.get(home,choix.get("keyFile")+".txt");
+                    Message message = new Message(true,msgClearPath,msgEncodedPath,msgKeyPath);
+                    message.read();
+                    break;
+                case "encode":
+                String jarPath = App.class.getPackageName();
+                    String path = new File(".").getCanonicalPath();
+                    System.out.println(path);
+            }
         }*/
 
-        System.out.println("╔════════════════════════════════════════╗\n" +
-                           "║                  Encodeur              ║ \n" +
-                           "╠════════════════════════════════════════╣ \n" +
-                           "║       1) Décoder un message            ║ \n" +
-                           "║       2) Encode un message             ║ \n" +
-                           "║       3) Quitter                       ║ \n" +
-                           "╚════════════════════════════════════════╝");
 
-        String test = "uVakB sQ:YUEHqxlRvIc,.wNtCpfMFmod!'hrWgKeLXGSZPnJbyDAzjiTO";
-        System.out.println(test.length());
 
-    }
-}
+
+
+
+
+
+    }}
+

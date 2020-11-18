@@ -1,5 +1,6 @@
 plugins {
     id 'java'
+    id 'application'
 }
 
 group 'org.petersix'
@@ -27,3 +28,15 @@ dependencies {
 test {
     systemProperty "file.encoding", "utf-8"
 }
+
+jar {
+    manifest {
+        attributes(
+                'Class-Path': configurations.compile.collect { it.getName() }.join(' '),
+                'Main-Class': 'org.petersix.App'
+        )
+    }
+}
+
+
+mainClassName = 'org.petersix.App'
