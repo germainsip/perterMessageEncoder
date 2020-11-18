@@ -48,39 +48,37 @@ public class App {
 
 
 
-        /*Menu menu = new Menu();
+        Menu menu = new Menu();
         String test = menu.init();
-        String home = System.getProperty("user.dir");*/
-
-        JFileChooser dialogue = new JFileChooser(new File("."));
-        PrintWriter sortie;
-        File fichier;
-
-        if (dialogue.showOpenDialog(null)==
-                JFileChooser.APPROVE_OPTION) {
-            fichier = dialogue.getSelectedFile();
-            //sortie = new PrintWriter(new FileWriter(fichier.getPath(), true));
-            //sortie.close();
-            System.out.println(fichier.getPath());
-            }
+        String home = System.getProperty("user.dir");
 
 
-       /* if (!test.equals("quit")){
+
+
+        if (!test.equals("quit")){
+            Path msgClearPath;
+            Path msgEncodedPath;
+            Path msgKeyPath;
+            Message message;
             Map<String,String> choix = menu.pathChooser(test);
             switch (test){
                 case "decode":
-                    Path msgClearPath = Paths.get(home,"decoded.txt");
-                    Path msgEncodedPath = Paths.get(home,choix.get("encodedFile")+".txt");
-                    Path msgKeyPath = Paths.get(home,choix.get("keyFile")+".txt");
-                    Message message = new Message(true,msgClearPath,msgEncodedPath,msgKeyPath);
+                    //Path msgClearPath = Paths.get(home,"decoded.txt");
+                    msgClearPath = Paths.get(home,"decoded.txt");
+                    msgEncodedPath = Paths.get(home,choix.get("encodedFile")+".txt");
+                    msgKeyPath = Paths.get(home,choix.get("keyFile")+".txt");
+                    message = new Message(true,msgClearPath,msgEncodedPath,msgKeyPath);
                     message.read();
                     break;
                 case "encode":
-                String jarPath = App.class.getPackageName();
-                    String path = new File(".").getCanonicalPath();
-                    System.out.println(path);
+                    msgClearPath = Paths.get(home, choix.get("clearFile")+".txt");
+                    msgEncodedPath = Paths.get(home,"encoded.txt");
+                    msgKeyPath = Paths.get(home,choix.get("keyFile")+".txt");
+                    message = new Message(false,msgClearPath,msgEncodedPath,msgKeyPath);
+                    message.read();
+                    break;
             }
-        }*/
+        }
 
 
 

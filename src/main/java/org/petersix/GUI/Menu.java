@@ -54,7 +54,6 @@ public Map<String, String> pathChooser(String type){
                 pathChoices.put("keyFile", sc.next());
                 break;
         }
-    //System.out.println(pathChoices.toString());
 
         return pathChoices;
 }

@@ -46,7 +46,7 @@ public class Message {
                 e.printStackTrace();
             }
             for(String ligne : msgEncodded){
-                System.out.println(ligne);
+                //System.out.println(ligne);
                 String ligneDecoded = transCoder.decode(ligne);
                 try {
                     Files.writeString(msgClearPath, ligneDecoded + System.lineSeparator(), StandardOpenOption.CREATE, StandardOpenOption.APPEND);
@@ -61,10 +61,10 @@ public class Message {
                 e.printStackTrace();
             }
             for (String ligne : msgClear) {
-                System.out.println(ligne);
+                //System.out.println(ligne);
                 String ligneEncoded = transCoder.encode(ligne);
                 try {
-                    Files.writeString(msgEncodedPath, (ligneEncoded + System.lineSeparator()), StandardOpenOption.APPEND,StandardOpenOption.CREATE);
+                    Files.writeString(msgEncodedPath, (ligneEncoded + System.lineSeparator()), StandardOpenOption.CREATE,StandardOpenOption.APPEND);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
