@@ -21,6 +21,9 @@ public class TransCoder {
         Character first = 'A';
         Character second = 'A';
         for(char letter : code){
+            //System.out.println(first.toString()+second.toString());
+            this.encode.put(letter,first.toString()+second.toString());
+            this.decode.put(first.toString()+second.toString(),letter);
             if (second != 'Z'){
                 second++;
             } else {
@@ -28,10 +31,9 @@ public class TransCoder {
                 second = 'A';
             }
 
-           // System.out.println(first.toString()+second.toString());
-            this.encode.put(letter,first.toString()+second.toString());
-            this.decode.put(first.toString()+second.toString(),letter);
+
         }
+        System.out.println(this.decode.toString());
     }
 
     /**
