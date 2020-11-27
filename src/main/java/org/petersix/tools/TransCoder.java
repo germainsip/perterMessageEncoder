@@ -17,6 +17,7 @@ public class TransCoder {
      * @param key
      */
     public TransCoder(GenKey key){
+        System.out.println(key.getGeneratedKey());
         char[] code = key.getGeneratedKey().toCharArray();
         Character first = 'A';
         Character second = 'A';
