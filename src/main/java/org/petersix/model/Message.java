@@ -10,6 +10,10 @@ import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.util.List;
 
+/**
+ * Classe Message
+ *
+ */
 public class Message {
     private Boolean encoded;
     private List<String> msgClear;
@@ -20,7 +24,14 @@ public class Message {
     private GenKey key;
     private TransCoder transCoder;
 
-
+    /**
+     * Constructeur de Message
+     * @param encoded
+     * @param msgClearPath
+     * @param msgEncodedPath
+     * @param keyPath
+     * @throws IOException
+     */
     public Message(Boolean encoded, Path msgClearPath, Path msgEncodedPath, Path keyPath) throws IOException {
         this.encoded = encoded;
         this.msgClearPath = msgClearPath;
@@ -37,13 +48,20 @@ public class Message {
         this.transCoder = new TransCoder(key);
     }
 
+    //TODO: gérer le cas où le fichier n'existe pas !
 
+    /**
+     * Méthode de lecture des fichier à encoder ou décoder
+     * écrit le résultat dans un fichier dont le nom est précisé à la création de l'objet message
+     *
+     */
     public void read() {
         if (encoded) {
             try {
                 this.msgEncodded = Files.readAllLines(msgEncodedPath);
             } catch (IOException e) {
-                e.printStackTrace();
+                //e.printStackTrace();
+                System.out.println("Le fichier spécifié n'existe pas le programme s'est arrêté");
             }
             System.out.println("====== Décodage =====");
             for(String ligne : msgEncodded){
@@ -61,7 +79,9 @@ public class Message {
             try {
                 this.msgClear = Files.readAllLines(msgClearPath);
             } catch (IOException e) {
-                e.printStackTrace();
+                //e.printStackTrace();
+                System.out.println("Le fichier spécifié n'existe pas le programme s'est arrêté");
+
             }
             for (String ligne : msgClear) {
                 //System.out.println(ligne);

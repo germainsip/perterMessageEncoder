@@ -9,12 +9,12 @@ import java.util.Map;
 import static org.apache.commons.lang3.StringUtils.stripAccents;
 
 public class TransCoder {
-    private Map<Character, String> encode = new HashMap<Character, String>();
-    private Map<String, Character> decode = new HashMap<String, Character>();
+    private Map<Character, String> encodeMap = new HashMap<Character, String>();
+    private Map<String, Character> decodeMap = new HashMap<String, Character>();
 
     /**
-     *
-     * @param key
+     * Constructeur de Transcoder
+     * @param key clé du type Genkey
      */
     public TransCoder(GenKey key){
         System.out.println(key.getGeneratedKey());
@@ -23,8 +23,8 @@ public class TransCoder {
         Character second = 'A';
         for(char letter : code){
             //System.out.println(first.toString()+second.toString());
-            this.encode.put(letter,first.toString()+second.toString());
-            this.decode.put(first.toString()+second.toString(),letter);
+            this.encodeMap.put(letter,first.toString()+second.toString());
+            this.decodeMap.put(first.toString()+second.toString(),letter);
             if (second != 'Z'){
                 second++;
             } else {
@@ -34,27 +34,27 @@ public class TransCoder {
 
 
         }
-        System.out.println(this.decode.toString());
+        System.out.println(this.decodeMap.toString());
     }
 
     /**
      *
      * @return
      */
-    public Map<Character, String> getEncode() {
-        return encode;
+    public Map<Character, String> getEncodeMap() {
+        return encodeMap;
     }
 
     /**
      *
      * @return
      */
-    public Map<String, Character> getDecode() {
-        return decode;
+    public Map<String, Character> getDecodeMap() {
+        return decodeMap;
     }
 
     /**
-     *
+     * Méthode d'écriture du fichier
      * @param path
      * @param msg
      */
@@ -68,7 +68,7 @@ public class TransCoder {
     }
 
     /**
-     *
+     * Méthode d'encodage
      * @param msgTest
      * @return
      */
@@ -78,13 +78,13 @@ public class TransCoder {
         char[] mesgTab = msgTest.toCharArray();
         StringBuilder msgRetour = new StringBuilder();
         for(Character letter : mesgTab){
-            msgRetour.append(encode.get(letter));
+            msgRetour.append(encodeMap.get(letter));
         }
         return msgRetour.toString();
     }
 
     /**
-     *
+     * Méthode de décodage
      * @param msgTest
      * @return
      */
@@ -99,11 +99,11 @@ public class TransCoder {
             j++;
             i++;
         }
-       // System.out.println("=========================");
+        // System.out.println("=========================");
         //System.out.println("encodage");
         for (String couple : mesgTab){
             //System.out.println(couple);
-            msgRetour.append(decode.get(couple));
+            msgRetour.append(decodeMap.get(couple));
         }
 
         return msgRetour.toString();

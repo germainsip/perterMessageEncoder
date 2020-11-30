@@ -47,8 +47,9 @@ public class App{
     public static void main(String[] args) throws IOException, URISyntaxException {
 
 
-
+        // Le menu s'initialise
         Menu menu = new Menu();
+        // On récupère l'entré de l'utilisateur
         String test = menu.init();
         String home = System.getProperty("user.dir");
 
@@ -61,6 +62,7 @@ public class App{
             Path msgKeyPath;
             Message message;
             Map<String,String> choix = menu.pathChooser(test);
+
             switch (test){
                 case "decode":
                     //Path msgClearPath = Paths.get(home,"decoded.txt");

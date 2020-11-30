@@ -7,7 +7,6 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.logging.FileHandler;
 
 public class TranscoderTest {
  public static GenKey testGermain;
@@ -24,10 +23,10 @@ public class TranscoderTest {
             e.printStackTrace();
         }
         TransCoder transcodeTest = new TransCoder(testGermain);
-        Assert.assertNotNull(transcodeTest.getEncode());
-        System.out.println(transcodeTest.getEncode().toString());
-        Assert.assertNotNull(transcodeTest.getDecode());
-        System.out.println(transcodeTest.getDecode().toString());
+        Assert.assertNotNull(transcodeTest.getEncodeMap());
+        System.out.println(transcodeTest.getEncodeMap().toString());
+        Assert.assertNotNull(transcodeTest.getDecodeMap());
+        System.out.println(transcodeTest.getDecodeMap().toString());
     }
 
     /*@Test
