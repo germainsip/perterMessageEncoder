@@ -1,6 +1,7 @@
 plugins {
     id 'java'
     id 'application'
+    id 'org.openjfx.javafxplugin' version '0.0.9'
 }
 
 group 'org.petersix'
@@ -18,11 +19,17 @@ repositories {
     }
 }
 
-dependencies {
-    testCompile group: 'junit', name: 'junit', version: '4.12'
+javafx {
+    version = "16"
+    modules = ["javafx.controls","javafx.fxml"]
+}
 
-    compile (name:'germLibCrypt-1.0', ext:'jar')
-    compile 'org.apache.commons:commons-lang3:3.11'
+dependencies {
+    testImplementation (group: 'junit', name: 'junit', version: '4.12')
+
+    implementation (name:'germLibCrypt-1.0', ext:'jar')
+    implementation ('org.apache.commons:commons-lang3:3.11')
+    implementation 'com.jfoenix:jfoenix:9.0.10'
 }
 
 test {
@@ -36,11 +43,10 @@ run {
 jar {
     manifest {
         attributes(
-                'Class-Path': configurations.compile.collect { it.getName() }.join(' '),
                 'Main-Class': 'org.petersix.App'
         )
     }
 }
 
 
-mainClassName = 'org.petersix.App'
+mainClassName = 'org.petersix.Main'
