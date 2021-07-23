@@ -47,7 +47,7 @@
             <HBox alignment="CENTER" spacing="10.0">
                <children>
                   <JFXButton fx:id="genBtn" buttonType="RAISED" mnemonicParsing="false" onAction="#userGenKey" style="-fx-background-color: green;" text="Générer clé" textFill="WHITE" visible="false" />
-                  <TextField fx:id="keyField" disable="true" prefHeight="27.0" prefWidth="662.0" promptText="la clé sera générée si vous n'en entrez pas" style="-fx-background-color: white;" text="PsWS1ufbK5yQR8EuhlY2rLQKH3GazmLFBJPduMG+gUczPA05maalE1LgkZDUp8lsHXJ1s29P5JO++6ni8F1fnA==" />
+                  <TextField fx:id="keyField" disable="true" prefHeight="27.0" prefWidth="662.0" promptText="la clé sera générée si vous n'en entrez pas" style="-fx-background-color: white;" />
                   <JFXToggleButton fx:id="keyLock" onAction="#unlock" selected="true" text="Verrouillé" toggleColor="#8f0000" toggleLineColor="#c27878" />
                </children>
             </HBox>
