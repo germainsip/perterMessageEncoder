@@ -33,7 +33,6 @@ import org.petersix.GUI.Menu;
 import org.petersix.model.Message;
 import org.petersix.tools.GenKey;
 
-import javax.swing.*;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;

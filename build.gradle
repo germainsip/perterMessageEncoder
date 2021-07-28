@@ -2,10 +2,11 @@ plugins {
     id 'java'
     id 'application'
     id 'org.openjfx.javafxplugin' version '0.0.9'
+    id 'org.beryx.jlink' version '2.24.1'
 }
 
 group 'org.petersix'
-version '1.0-SNAPSHOT'
+version '1.0'
 
 compileJava.options.encoding = 'UTF-8'
 tasks.withType(JavaCompile) {
@@ -14,20 +15,17 @@ tasks.withType(JavaCompile) {
 
 repositories {
     mavenCentral()
-    flatDir {
-        dirs 'libs'
-    }
+
 }
 
 javafx {
     version = "16"
-    modules = ["javafx.controls","javafx.fxml"]
+    modules = ["javafx.controls","javafx.fxml","javafx.graphics"]
 }
 
 dependencies {
     testImplementation (group: 'junit', name: 'junit', version: '4.12')
 
-    implementation (name:'germLibCrypt-1.0', ext:'jar')
     implementation ('org.apache.commons:commons-lang3:3.11')
     implementation 'com.jfoenix:jfoenix:9.0.10'
 }
@@ -48,5 +46,13 @@ jar {
     }
 }
 
+jlink {
+    options = ['--strip-debug', '--compress', '2', '--no-header-files', '--no-man-pages']
+    launcher{
+        name = 'transcode'
+        jvmArgs = ['-Dlog4j.configurationFile=./log4j2.xml']
+    }
+    forceMerge('commons-lang3')
+}
 
 mainClassName = 'org.petersix.Main'

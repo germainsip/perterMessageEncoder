@@ -1,6 +1,7 @@
 package org.petersix.tools;
 
-import org.germain.tool.ManaBox;
+
+import org.petersix.utils.ManaBox;
 
 import java.util.Arrays;
 import java.util.Collections;
